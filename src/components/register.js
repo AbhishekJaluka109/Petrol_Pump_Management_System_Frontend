@@ -150,7 +150,14 @@ const RegisterPage = () => {
           </div>
           <div className="acc text-center mt-3">
             Have an account?{" "}
-            <a href="" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault(); 
+                navigate("/");
+              }}
+              style={{ cursor: "pointer" }}
+            >
               Sign in
             </a>
           </div>

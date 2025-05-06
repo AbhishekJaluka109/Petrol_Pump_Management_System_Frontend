@@ -130,10 +130,17 @@ const LoginPage = () => {
             </button>
           </div>
 
-          {/* Sign Up Link */}
+          
           <div className="acc text-center mt-3">
             Don't have an account?{" "}
-            <a href="" onClick={() => navigate("/register")} style={{ cursor: "pointer" }}>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault(); 
+                navigate("/register");
+              }}
+              style={{ cursor: "pointer" }}
+            >
               Sign up
             </a>
           </div>
