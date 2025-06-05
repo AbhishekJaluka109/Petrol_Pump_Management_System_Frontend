@@ -6,6 +6,7 @@ import { Link ,useNavigate,useParams,useLocation} from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import Input from "./Input"
 import Delete from "./deleteData.js"
+import BASE_URL from "./config.js";
 
 
 function Forms(props){
@@ -21,7 +22,7 @@ function Forms(props){
     }
 },[]);
     useEffect(()=>{
-        fetch("https://petrol-pump-management-system-backend-vmp6.onrender.com/"+props.module+"/input", {
+        fetch(`${BASE_URL}/${props.module}/input`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -31,6 +32,7 @@ function Forms(props){
             alert("Access Denied");
             navigate("/"+props.module);
           }
+          console.log(data.data);
             setSchema(data.data);
             
         });
@@ -38,7 +40,7 @@ function Forms(props){
     },[props.module])
 
     useEffect(()=>{
-        fetch("https://petrol-pump-management-system-backend-vmp6.onrender.com/"+props.module, {
+        fetch(`${BASE_URL}/`+props.module, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -59,7 +61,7 @@ function Forms(props){
                 await Delete(value,props.module);
             console.log("insert");
             console.log(typeof modelData.amount);
-            const response = await fetch("https://petrol-pump-management-system-backend-vmp6.onrender.com/" + props.module, {
+            const response = await fetch(`${BASE_URL}/` + props.module, {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',

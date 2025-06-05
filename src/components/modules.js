@@ -1,6 +1,7 @@
 
 
 import { useState, useEffect } from "react";
+import BASE_URL from "./config";
 
 const useGetModules = () => {
     const [modules, setModules] = useState([]);
@@ -15,12 +16,19 @@ const useGetModules = () => {
             }
 
             try {
-                const response = await fetch("https://petrol-pump-management-system-backend-vmp6.onrender.com/modules", {
+                const response = await fetch(`${BASE_URL}/modules`, {
                     headers: { "Authorization": token },
                 });
 
+                
+
                 const data = await response.json();
-                if (data.success) setModules(data.module);
+                console.log(data);
+                if (data.success) {
+                    console.log(data.module);
+                    setModules(data.module);
+                    console.log(modules);
+                }
                 else setModules([]);
             } catch (error) {
                 console.error("Error fetching modules:", error);

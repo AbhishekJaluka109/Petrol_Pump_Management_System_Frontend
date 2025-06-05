@@ -8,7 +8,7 @@ const HomePage = () => {
     const navigate = useNavigate();
 
     const modules=useGetModules();
-
+    console.log(modules);
     useEffect(()=>{
             if(!localStorage.getItem('token')){
             alert("Please LogIn");

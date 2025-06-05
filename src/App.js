@@ -6,6 +6,7 @@ import Forms from './components/form.js';
 import HomePage from './components/homePage.js';
 import LoginPage from './components/login.js';
 import RegisterPage from './components/register.js';
+import TaskCalendar from './components/sample_task.js';
 
 function App() {
   const token = localStorage.getItem("token");
@@ -18,8 +19,7 @@ function App() {
     { index: 6, title: "Task" },
     { index: 7, title: "Inspection"},
     { index: 8, title: "Purchase"},
-    { index: 9, title: "Finance"},
-    { index:10, title: "Accounts"}
+    { index: 9, title: "Finance"}
 ];
   return (
     <Router>
@@ -28,12 +28,20 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          
-          
-              <Route path="/dashboard" element={<HomePage />} />
-              {modules.map((module) => (
-                <Route key={module.title} path={`/${module.title}`} element={<Records module={module.title} />} />
-              ))}
+          <Route path="/dashboard" element={<HomePage />} />
+          {modules.map((module) => (
+  <Route
+    key={module.title}
+    path={`/${module.title}`}
+    element={
+      module.title === "Task" ? (
+        <TaskCalendar module="Task"/>
+      ) : (
+        <Records module={module.title} />
+      )
+    }
+  />
+))}
               {modules.map((module) => (
                 <Route key={`${module.title}/Form`} path={`/${module.title}/Form`} element={<Forms module={module.title} />} />
               ))}

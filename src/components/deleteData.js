@@ -1,8 +1,8 @@
 
-
+import BASE_URL from "./config";
 const Delete=async (id,module)=>{
         try {
-            const response = await fetch("https://petrol-pump-management-system-backend-vmp6.onrender.com/" + module+"/delete", {
+            const response = await fetch(`${BASE_URL}/` + module+"/delete", {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',

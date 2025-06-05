@@ -3,6 +3,9 @@ import InputText from "./InputText";
 import InputNumber from "./InputNumber";
 import InputSelect from "./InputSelect";
 import InputDate from "./InputDate";
+import InputTime from "./InputTime";
+import InputCheckbox from "./InputCheckBoc";
+
 
 function Input(props){
     const onChange=(data)=>{
@@ -22,6 +25,12 @@ function Input(props){
     }
     else if(props.type==='Boolean'){
         return <InputSelect name={props.name} value={props.value} required={props.required} onChange={onChange} enum={["True","False"]}/>
+    }
+    else if(props.type==='Time'){
+        return <InputTime name={props.name} value={props.value} required={props.required} onChange={onChange} />
+    }
+    else if(props.type==='Checkbox'){
+        return <InputCheckbox name={props.name} value={props.value} required={props.required} onChange={onChange} />
     }
 }
 

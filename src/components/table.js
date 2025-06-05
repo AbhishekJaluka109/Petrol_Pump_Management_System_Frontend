@@ -5,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Delete from "./deleteData";
+import BASE_URL from "./config"; 
 
 const Records = (props) => {
   const [fields, setFields] = useState([]);
@@ -35,8 +36,8 @@ const Records = (props) => {
           Authorization: token,
         };
         const [fieldsRes, valuesRes] = await Promise.all([
-          fetch(`https://petrol-pump-management-system-backend-vmp6.onrender.com/${props.module}/fields`, { method: "GET", headers }),
-          fetch(`https://petrol-pump-management-system-backend-vmp6.onrender.com/${props.module}`, { method: "GET", headers }),
+          fetch(`${BASE_URL}/${props.module}/fields`, { method: "GET", headers }),
+          fetch(`${BASE_URL}/${props.module}`, { method: "GET", headers }),
         ]);
 
         const fieldsData = await fieldsRes.json();

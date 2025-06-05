@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "./config";
 
 const LoginPage = () => {
   const [employeeId, setEmployeeId] = useState("");
@@ -23,7 +24,7 @@ const LoginPage = () => {
 
     const timeout = setTimeout(async () => {
       try {
-        const response = await fetch("https://petrol-pump-management-system-backend-vmp6.onrender.com/register/userCheck", {
+        const response = await fetch(`${BASE_URL}/register/userCheck`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -69,7 +70,7 @@ const LoginPage = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://petrol-pump-management-system-backend-vmp6.onrender.com/login", {
+      const response = await fetch(`${BASE_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
